@@ -1,15 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 30001;
-const mongodb = require("mongodb");
+const port = 3001;
+const clusterRoutes = require("./routes/clusterRoutes")
 
-app.get("/", (req, res) => {
-res.send({message:"Successfully connected to the database"})
-});
-
-
+app.use("/", clusterRoutes);
 
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`)
-})
+  console.log(`Server running on http://localhost:${port}`);
+});
